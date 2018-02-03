@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Sample004|Chinats</title>
+</head>
+<style>
+/*タブの中身を初期非表示に*/
+.ChangeElem_Panel {
+  display: none;
+}
+/*タブを横並べに*/
+.ChangeElem_Btn_Content {
+  display: flex;
+  justify-content: space-around;
+}
+/*通常時のタブ装飾*/
+.ChangeElem_Btn {
+  border: 2px solid #ccc;
+  background-color: #fff;
+  border-radius: 10px;
+  color: #666;
+  cursor: pointer;
+  display: inline-block;
+  flex: 1;
+  font-size: 1.2rem;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  position: relative;
+  transition: all .3s ease-in-out;
+  vertical-align: middle;
+}
+/*カレントとホバー時のタブ装飾*/
+.ChangeElem_Btn:hover,
+.ChangeElem_Btn.is-active {
+  background: #fcf7f1;
+  border: 2px solid #fcbc82;
+  box-sizing: border-box;
+  color: #333;
+}
+</style>
+<body>
+  <div>
+    <div class="ChangeElem_Btn_Content">
+      <button class="ChangeElem_Btn">1番目のタブ</button>
+      <button class="ChangeElem_Btn">2番目のタブ</button>
+      <button class="ChangeElem_Btn">3番目のタブ</button>
+    </div>
+    <ul>
+      <li class="ChangeElem_Panel">1番目のコンテンツ1番目のコンテンツ1番目のコンテンツ1番目のコンテンツ1番目のコンテンツ1番目のコンテンツ1番目のコンテンツ1番目のコンテンツ1番目のコンテンツ1番目のコンテンツ</li>
+      <li class="ChangeElem_Panel">2番目のコンテンツ2番目のコンテンツ2番目のコンテンツ2番目のコンテンツ2番目のコンテンツ2番目のコンテンツ2番目のコンテンツ2番目のコンテンツ2番目のコンテンツ2番目のコンテンツ</li>
+      <li class="ChangeElem_Panel">3番目のコンテンツ3番目のコンテンツ3番目のコンテンツ3番目のコンテンツ3番目のコンテンツ3番目のコンテンツ3番目のコンテンツ3番目のコンテンツ3番目のコンテンツ3番目のコンテンツ</li>
+    </ul>
+  </div>
+</body>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.min.js"></script>
+<script>
+$(function () {
+  /*初期表示*/
+  $('.ChangeElem_Panel').hide();
+  $('.ChangeElem_Panel').eq(0).show();
+  $('.ChangeElem_Btn').eq(0).addClass('is-active');
+  /*クリックイベント*/
+  $('.ChangeElem_Btn').each(function () {
+    $(this).on('click', function () {
+      var index = $('.ChangeElem_Btn').index(this);
+      $('.ChangeElem_Btn').removeClass('is-active');
+      $(this).addClass('is-active');
+      $('.ChangeElem_Panel').hide();
+      $('.ChangeElem_Panel').eq(index).show();
+    });
+  });
+});
+</script>
+</html>
